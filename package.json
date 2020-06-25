@@ -1,0 +1,26 @@
+{
+  "name": "randomjsongenerator",
+  "version": "0.0.1",
+  "description": "Random API Response",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-rate-limit": "^5.1.3",
+    "helmet": "^3.23.2",
+    "lorem-ipsum": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TestProgger/Fake-REST-API.git"
+  },
+  "author": "TestProgger",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TestProgger/Fake-REST-API/issues"
+  },
+  "homepage": "https://github.com/TestProgger/Fake-REST-API#readme"
+}
