@@ -25,33 +25,32 @@ const lorem = new LoremIpsum({
 
 app.use(rate_limiter);
 app.use(helmet());
-app.use( express.json() )
+app.use(express.json());
 
 app.post("/api/news", async (request, response) => {
-    let news ={}
-    if( !isNaN(  +request.query['howmany'] ) ){
-        const max_news = +request.query['howmany'] % 16;
-        news = news_gen(max_news)
-    }else{
-        news = news_gen();
-    }
+  let news = {};
+  if (!isNaN(+request.query["howmany"])) {
+    const max_news = +request.query["howmany"] % 16;
+    news = news_gen(max_news);
+  } else {
+    news = news_gen();
+  }
 
-    response.json( news )
-    delete news
-
+  response.json(news);
+  delete news;
 });
 
-app.post('/api/users' , async(request , response) => {
-    let users = {};
-    if( !isNaN(  +request.query['howmany'] ) ){
-        const max_users = +request.query['howmany'] % 16;
-        users = user_gen(max_users)
-    }else{
-        users = user_gen();
-    }
-    response.json( users );
-    delete users
-} )
+app.post("/api/users", async (request, response) => {
+  let users = {};
+  if (!isNaN(+request.query["howmany"])) {
+    const max_users = +request.query["howmany"] % 16;
+    users = user_gen(max_users);
+  } else {
+    users = user_gen();
+  }
+  response.json(users);
+  delete users;
+});
 
 function randint(a, b) {
   return Math.round(Math.random() * (b - a) + a);
@@ -64,11 +63,11 @@ function getCurrentDate() {
   }`;
 }
 
-function getRandomBytes( n ){
-    let string = "";
-    for(let i = 0; i < n ; i++){
-        string += String.fromCharCode(randint(33 , 126))
-    }  
+function getRandomBytes(n) {
+  let string = "";
+  for (let i = 0; i < n; i++) {
+    string += String.fromCharCode(randint(33, 126));
+  }
 }
 
 function news_gen(how_many = 1) {
@@ -83,16 +82,16 @@ function news_gen(how_many = 1) {
   return news;
 }
 
-function user_gen(how_many = 1){
-    let users = {};
-    for( let i = 0; i < how_many;i++ ){
-        users[i] = {
-                    custom_id   : getRandomBytes(32),
-                    username    : lorem.generateWords(1),
-                    rating      : randint( 0 , 100 ),
-                    description : lorem.generateSentences(2)
-        }
-    }
-    return users
+function user_gen(how_many = 1) {
+  let users = {};
+  for (let i = 0; i < how_many; i++) {
+    users[i] = {
+      custom_id: getRandomBytes(32),
+      username: lorem.generateWords(1),
+      rating: randint(0, 100),
+      description: lorem.generateSentences(2),
+    };
+  }
+  return users;
 }
 app.listen(3000);
