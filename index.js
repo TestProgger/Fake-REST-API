@@ -68,6 +68,7 @@ function getRandomBytes(n) {
   for (let i = 0; i < n; i++) {
     string += String.fromCharCode(randint(33, 126));
   }
+  return string;
 }
 
 function news_gen(how_many = 1) {
